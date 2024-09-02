@@ -1,9 +1,5 @@
-<p>This is a paragraph.</p>
+<script>
+	import Tutorial from '../tutorial/Tutorial.svelte';
+</script>
 
-<style>
-	p {
-		color: goldenrod;
-		font-family: 'Comic Sans MS', cursive;
-		font-size: 2em;
-	}
-</style>
+<Tutorial />
