@@ -1,19 +1,13 @@
 <script>
-	let count = $state(0);
+	let numbers = $state([1, 2, 3, 4]);
 
-	function increment() {
-		count++;
+	function addNumber() {
+		numbers.push(numbers.length + 1);
 	}
 
-	let doubled = $derived(count * 2);
-
-	$effect(() => {
-		console.log(`the count is ${count}`);
-		console.log(`this will also be logged whenever count changes`);
-	});
+	let sum = $derived(numbers.reduce((total, currentNumber) => total + currentNumber, 0));
 </script>
 
-<button onclick={increment}>
-	Clicked {count}
-	{count === 1 ? 'time' : 'times'}
-</button>
+<p>{numbers.join(' + ')} = {sum}</p>
+
+<button onclick={addNumber}> Add a number </button>
