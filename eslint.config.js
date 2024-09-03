@@ -29,5 +29,11 @@ export default [
 	},
 	{
 		ignores: ['build/', '.svelte-kit/', 'dist/']
+	},
+	{
+		rules: {
+			// ...
+			'svelte/block-lang': ['error', { script: 'ts' }]
+		}
 	}
 ];

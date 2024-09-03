@@ -1,13 +1,12 @@
-<script lang="ts">
-	import type { PackageInfoProps } from './packageinfo';
-	import PackageInfo from './PackageInfo.svelte';
+<script>
+	let count = $state(0);
 
-	const pkg: PackageInfoProps = {
-		name: 'svelte',
-		speed: 'blazing',
-		version: 5,
-		website: 'https://svelte.dev'
-	};
+	function increment() {
+		count += 1;
+	}
 </script>
 
-<PackageInfo {...pkg} />
+<button onclick={increment}>
+	Clicked {count}
+	{count === 1 ? 'time' : 'times'}
+</button>
