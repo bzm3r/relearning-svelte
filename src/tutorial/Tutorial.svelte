@@ -13,4 +13,6 @@
 
 {#if count > 10}
 	<p>{count} is greater than 10</p>
+{:else}
+	<p>you have to press the button {10 - count} more times!</p>
 {/if}
