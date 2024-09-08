@@ -1,19 +1,23 @@
 <script lang="ts">
-	import { getRandomNumber } from './utils.js';
+	let m = $state({ x: 0, y: 0 });
 
-	let promise = $state(getRandomNumber());
-
-	function handleClick() {
-		promise = getRandomNumber();
+	function handleMove(event: PointerEvent) {
+		m.x = event.clientX;
+		m.y = event.clientY;
 	}
 </script>
 
-<button onclick={handleClick}> generate random number </button>
+<div onpointermove={handleMove}>
+	The pointer is at {m.x} x {m.y}
+</div>
 
-{#await promise}
-	<p>...waiting</p>
-{:then number}
-	<p>The number is {number}</p>
-{:catch error}
-	<p style="color: red">{error.message}</p>
-{/await}
+<style>
+	div {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding: 1rem;
+	}
+</style>
