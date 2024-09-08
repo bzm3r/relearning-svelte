@@ -1,23 +1,19 @@
 <script lang="ts">
-	import type { EmojiMap } from './Thing';
-	import Thing from './Thing.svelte';
+	import { getRandomNumber } from './utils.js';
 
-	type ThingObj = { id: Number; name: keyof EmojiMap };
-	let things: ThingObj[] = $state([
-		{ id: 1, name: 'apple' },
-		{ id: 2, name: 'banana' },
-		{ id: 3, name: 'carrot' },
-		{ id: 4, name: 'doughnut' },
-		{ id: 5, name: 'egg' }
-	]);
+	let promise = $state(getRandomNumber());
 
 	function handleClick() {
-		things = things.slice(1);
+		promise = getRandomNumber();
 	}
 </script>
 
-<button onclick={handleClick}> Remove first thing </button>
+<button onclick={handleClick}> generate random number </button>
 
-{#each things as thing}
-	<Thing name={thing.name} />
-{/each}
+{#await promise}
+	<p>...waiting</p>
+{:then number}
+	<p>The number is {number}</p>
+{:catch error}
+	<p style="color: red">{error.message}</p>
+{/await}
