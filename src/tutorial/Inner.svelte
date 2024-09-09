@@ -1,5 +1,7 @@
 <script lang="ts">
-	import type { InnerProps } from './InnerProps';
+	interface InnerProps {
+		handleMessage: (message: string) => void;
+	}
 
 	let message = 'Hello!';
 	let { handleMessage }: InnerProps = $props();
