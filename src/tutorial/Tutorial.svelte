@@ -1,14 +1,7 @@
-<script>
-	import BigRedButton from './BigRedButton.svelte';
-	import horn from './horn.mp3';
-
-	const audio = new Audio();
-	audio.src = horn;
-
-	function handleClick() {
-		audio.load();
-		audio.play();
-	}
+<script lang="ts">
+	let name = $state('world');
 </script>
 
-<BigRedButton onclick={handleClick} />
+<input bind:value={name} />
+
+<h1>Hello {name}!</h1>
